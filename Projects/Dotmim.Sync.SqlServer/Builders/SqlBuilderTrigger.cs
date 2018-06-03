@@ -40,6 +40,7 @@ namespace Dotmim.Sync.SqlServer.Builders
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
+            stringBuilder.AppendLine("SET NOCOUNT ON;");
             stringBuilder.AppendLine("UPDATE [side] ");
             stringBuilder.AppendLine("SET \t[sync_row_is_tombstone] = 1");
             stringBuilder.AppendLine("\t,[update_scope_id] = NULL -- since the update if from local, it's a NULL");
@@ -223,6 +224,7 @@ namespace Dotmim.Sync.SqlServer.Builders
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
+            stringBuilder.AppendLine("SET NOCOUNT ON;");
             stringBuilder.AppendLine("-- If row was deleted before, it already exists, so just make an update");
             stringBuilder.AppendLine("UPDATE [side] ");
             stringBuilder.AppendLine("SET \t[sync_row_is_tombstone] = 0");
@@ -464,6 +466,7 @@ namespace Dotmim.Sync.SqlServer.Builders
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine();
+            stringBuilder.AppendLine("SET NOCOUNT ON;");
             stringBuilder.AppendLine("UPDATE [side] ");
             stringBuilder.AppendLine("SET \t[update_scope_id] = NULL -- since the update if from local, it's a NULL");
             stringBuilder.AppendLine("\t,[update_timestamp] = @@DBTS+1");
